@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: Say hello
+    steps:
+      - name: Hello world action step
+        id: hello
+        uses: J-1000/slack-javascript-action
+        with:
+          who-to-greet: 'Foo Bar'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
